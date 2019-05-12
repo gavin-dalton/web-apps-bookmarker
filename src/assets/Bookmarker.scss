@@ -1,0 +1,52 @@
+// Star Trek Colours
+// https://www.color-hex.com/color-palette/40315
+$st-yellow: #c1c730;
+$st-read: #a71313;
+$st-blue: #2b53a7;
+$st-orange: #d6a444;
+
+// Sci Fi Blue Colours
+// https://www.color-hex.com/color-palette/73225
+$sfb-5: #002439;
+$sfb-4: #005066;
+$sfb-3: #4e7988;
+$sfb-2: #78cce2;
+$sfb-1: #e4eff0;
+
+// Bootstrap overwrite
+.bg-dark {
+  background-color: $sfb-5 !important;
+}
+
+.btn {
+  color: $st-orange !important;
+  border-color: $st-orange !important;
+}
+
+.btn:hover, .dropdown-item:hover {
+  background-color: $sfb-4 !important;
+}
+
+.navbar-text {
+  color: $st-orange !important;
+}
+
+.dropdown-menu, .dropdown-item {
+  color: $st-orange !important;
+  background-color: $sfb-3 !important;
+}
+
+// Custom colouring
+.gd-bm-flex-alpha {
+  flex: 0 0 50px;
+}
+
+.gd-bm-icon {
+  color: $sfb-4;
+  font-size: 2rem;
+  cursor: pointer;
+}
+
+.gd-bm-icon:hover {
+  color: $sfb-2;
+}
