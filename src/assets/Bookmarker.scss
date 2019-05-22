@@ -23,8 +23,18 @@ $sfb-1: #e4eff0;
   border-color: $st-orange !important;
 }
 
-.btn:hover, .dropdown-item:hover {
+.btn:hover,
+.dropdown-item:hover,
+.list-group-item:hover {
   background-color: $sfb-4 !important;
+}
+
+.list-group-item {
+  background-color: $sfb-5 !important;
+}
+
+.list-group-item-action {
+  color: $sfb-2 !important;
 }
 
 .navbar-text {
@@ -36,7 +46,7 @@ $sfb-1: #e4eff0;
   background-color: $sfb-3 !important;
 }
 
-// Custom colouring
+// Custom CSS
 .gd-bm-flex-alpha {
   flex: 0 0 50px;
 }

@@ -52,6 +52,44 @@ const getLocalStorage = (obj) => {
 }
 
 /**
+ * Get mock data sample data
+ * @param {string} obj Dummy local storage identifier
+ */
+const getMockStorage = (obj) => {
+  const response = {
+    statusOK: true,
+    // statusOK: false,
+    data: [
+      {
+        siteName: 'Google',
+        siteURL: 'https://www.google.co.za'
+      },
+      {
+        siteName: 'Standard Bank',
+        siteURL: 'https://www.google.co.za'
+      },
+      {
+        siteName: 'Banana Tree',
+        siteURL: 'https://www.google.co.za'
+      },
+      {
+        siteName: 'First National Bank',
+        siteURL: 'https://www.google.co.za'
+      },
+      {
+        siteName: 'Apple Trees',
+        siteURL: 'https://www.google.co.za'
+      },
+      {
+        siteName: 'Hello World',
+        siteURL: 'https://www.google.co.za'
+      }
+    ]
+  };
+  return response;
+}
+
+/**
  * Append item to local storage
  * @param {string} obj Local storage identifier
  * @param {any} data Data object to store
@@ -98,3 +136,4 @@ module.exports.getLocalStorage = getLocalStorage;
 module.exports.addLocalStorage = addLocalStorage;
 module.exports.saveLocalStorage = saveLocalStorage;
 module.exports.removeLocalStorage = removeLocalStorage;
+module.exports.getMockStorage = getMockStorage;
