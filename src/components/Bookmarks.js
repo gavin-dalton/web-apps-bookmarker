@@ -6,7 +6,7 @@ const Bookmarks = (props) => {
   const [state, dispatch] = useContext(BookmarkContext);
 
   useEffect(() => {
-    dispatch({ type: 'BM_LOADING' })
+    dispatch({ type: 'BM_LOADING', payload: '' })
     // console.log('Bookmarks: effect...', state);
 
     setTimeout(() => {
@@ -17,6 +17,9 @@ const Bookmarks = (props) => {
       if (storedData.statusOK) {
         // console.log('Bookmarks: storedData...', storedData.data);
         dispatch({ type: 'BM_FETCHED', payload: storedData.data });
+        if (state.hasChanged !== storedData.data.length) {
+          dispatch({ type: 'BM_CHANGED', payload: storedData.data.length });
+        }
       } else {
         dispatch({ type: 'BM_FAILURE', payload: [] });
       }
@@ -38,30 +41,33 @@ const Bookmarks = (props) => {
         !state.isError ? (
           <div className="list-group mt-2 mr-2">
             {state.bookmarks.map((bookmark, index) => {
-              return (
-                <div className="d-flex flex-nowrap align-items-center mb-2" key={index}>
-                  <div className="w-100">
-                    <a
-                      className="list-group-item list-group-item-action"
-                      href={bookmark.siteURL}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >{bookmark.siteName}</a>
+              if (bookmark.siteName.slice(0, 1) === props.route || props.route === '/') {
+                return (
+                  <div className="d-flex flex-nowrap align-items-center mb-2" key={index}>
+                    <div className="w-100">
+                      <a
+                        className="list-group-item list-group-item-action"
+                        href={bookmark.siteURL}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >{bookmark.siteName}</a>
+                    </div>
+                    <div className="flex-grow-0 flex-shrink-0">
+                      <i
+                        className="far fa-edit mx-2 gd-bm-icon"
+                        data-index={index}
+                        onClick={() => { dispatch({ type: 'BM_EDIT', payload: index }) }}
+                      ></i>
+                      <i
+                        className="far fa-trash-alt gd-bm-icon"
+                        data-index={index}
+                        onClick={() => { dispatch({ type: 'BM_DELETE', payload: index }) }}
+                      ></i>
+                    </div>
                   </div>
-                  <div className="flex-grow-0 flex-shrink-0">
-                    <i
-                      className="far fa-edit mx-2 gd-bm-icon"
-                      data-index={index}
-                      onClick={() => { dispatch({ type: 'BM_EDIT', payload: index }) }}
-                    ></i>
-                    <i
-                      className="far fa-trash-alt gd-bm-icon"
-                      data-index={index}
-                      onClick={() => { dispatch({ type: 'BM_DELETE', payload: index }) }}
-                    ></i>
-                  </div>
-                </div>
-              );
+
+                );
+              } else { return null }
             })}
           </div>
         ) : (

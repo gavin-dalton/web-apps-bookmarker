@@ -23,6 +23,10 @@ $sfb-1: #e4eff0;
   border-color: $st-orange !important;
 }
 
+.btn-primary {
+  background-color: $sfb-3 !important;
+}
+
 .btn:hover,
 .dropdown-item:hover,
 .list-group-item:hover {
@@ -47,6 +51,10 @@ $sfb-1: #e4eff0;
 }
 
 // Custom CSS
+.gd-bm-container {
+  max-width: 100%;
+}
+
 .gd-bm-flex-alpha {
   flex: 0 0 50px;
 }
@@ -59,4 +67,10 @@ $sfb-1: #e4eff0;
 
 .gd-bm-icon:hover {
   color: $sfb-2;
+}
+
+@media (min-width: 992px) {
+  .gd-bm-container {
+    max-width: 992px;
+  }
 }

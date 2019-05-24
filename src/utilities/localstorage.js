@@ -83,6 +83,10 @@ const getMockStorage = (obj) => {
       {
         siteName: 'Hello World',
         siteURL: 'https://www.google.co.za'
+      },
+      {
+        siteName: 'Batman',
+        siteURL: 'https://www.batman.com'
       }
     ]
   };
