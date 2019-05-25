@@ -5,8 +5,6 @@ const initBookmarks = {
   isLoading: false,
   isError: false,
   hasChanged: 0,
-  siteName: '',
-  siteURL: '',
   bookmarks: []
 };
 

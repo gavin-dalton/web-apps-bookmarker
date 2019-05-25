@@ -123,12 +123,15 @@ const saveLocalStorage = (obj, data) => {
 /**
  * Remove item from local storage
  * @param {string} obj Local storage identifier
- * @param {number} data Data object to remove
+ * @param {any} data Data object to remove
+ * @param {string} member Data object member to filter on
  */
-const removeLocalStorage = (obj, data) => {
+const removeLocalStorage = (obj, data, member) => {
   const storedData = JSON.parse(localStorage.getItem(obj));
   let newData = [];
-  newData = storedData.filter((item) => { return item.id !== data.id })
+  // Need a polyfill to support IE
+  // https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Array/filter
+  newData = storedData.filter((item) => { return item[member] !== data[member] })
   // console.log(newData);
   localStorage.setItem(obj, JSON.stringify(newData));
   return true;

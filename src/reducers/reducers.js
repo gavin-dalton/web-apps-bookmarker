@@ -26,11 +26,11 @@ export const BookmarkReducer = (state, action) => {
         isError: false,
         bookmarks: action.payload
       };
-    case 'BM_INPUT':
-      return {
-        ...state,
-        [action.payload.id]: action.payload.value
-      };
+    // case 'BM_INPUT':
+    //   return {
+    //     ...state,
+    //     [action.payload.id]: action.payload.value
+    //   };
     case 'BM_FAILURE':
       // Can do some error handling here if needed
       return {

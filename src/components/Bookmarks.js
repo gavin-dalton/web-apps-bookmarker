@@ -1,18 +1,19 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import { BookmarkContext } from '../context/BookmarkStore';
-import { getMockStorage } from '../utilities/localstorage';
+import Editor from './Editor';
+import { getLocalStorage, getMockStorage, removeLocalStorage } from '../utilities/localstorage';
 
 const Bookmarks = (props) => {
+  const [editorState, setEditorState] = useState('collapse show')
   const [state, dispatch] = useContext(BookmarkContext);
 
   useEffect(() => {
-    dispatch({ type: 'BM_LOADING', payload: '' })
+    dispatch({ type: 'BM_LOADING' })
     // console.log('Bookmarks: effect...', state);
-
     setTimeout(() => {
       let storedData = {};
-      // storedData = getLocalStorage('gd-bm-bookmarks');
-      storedData = getMockStorage('gd-bm-bookmarks');
+      storedData = getLocalStorage('gd-bm-bookmarks');
+      // storedData = getMockStorage('gd-bm-bookmarks');
       // console.log('storedData: status...', storedData.statusOK);
       if (storedData.statusOK) {
         // console.log('Bookmarks: storedData...', storedData.data);
@@ -24,19 +25,31 @@ const Bookmarks = (props) => {
         dispatch({ type: 'BM_FAILURE', payload: [] });
       }
     }, 500);
-
     // Effect clean-up function
-    return () => {
-      // console.log('Bookamrks: effect cleaning up');
-      return true;
-    };
+    return () => true;
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [props.route]);
 
-  // console.log('Bookmarks: state...', state);
+  const handleDelete = (e) => {
+    e.preventDefault();
+    const i = parseInt(e.target.dataset.index);
+    dispatch({ type: 'BM_LOADING' })
+    removeLocalStorage('gd-bm-bookmarks', state.bookmarks[i], 'siteURL');
+    setTimeout(() => {
+      dispatch({ type: 'BM_FETCHED', payload: getLocalStorage('gd-bm-bookmarks') });
+    }, 500);
+  };
+
+  const handleEditorState = () => {
+    setEditorState('collapse');
+  };
 
   return (
     <>
+      <Editor
+        editorState={editorState}
+        handleEditorState={handleEditorState}
+      />
       {!state.isLoading ? (
         !state.isError ? (
           <div className="list-group mt-2 mr-2">
@@ -61,11 +74,10 @@ const Bookmarks = (props) => {
                       <i
                         className="far fa-trash-alt gd-bm-icon"
                         data-index={index}
-                        onClick={() => { dispatch({ type: 'BM_DELETE', payload: index }) }}
+                        onClick={handleDelete}
                       ></i>
                     </div>
                   </div>
-
                 );
               } else { return null }
             })}
