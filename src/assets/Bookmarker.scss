@@ -14,42 +14,42 @@ $sfb-2: #78cce2;
 $sfb-1: #e4eff0;
 
 // Bootstrap overwrite
-.bg-dark {
-  background-color: $sfb-5 !important;
-}
+// .bg-dark {
+//   background-color: $sfb-5 !important;
+// }
 
-.btn {
-  color: $st-orange !important;
-  border-color: $st-orange !important;
-}
+// .btn {
+//   color: $st-orange !important;
+//   border-color: $st-orange !important;
+// }
 
-.btn-primary {
-  background-color: $sfb-3 !important;
-}
+// .btn-primary {
+//   background-color: $sfb-3 !important;
+// }
 
-.btn:hover,
-.dropdown-item:hover,
-.list-group-item:hover {
-  background-color: $sfb-4 !important;
-}
+// .btn:hover,
+// .dropdown-item:hover,
+// .list-group-item:hover {
+//   background-color: $sfb-4 !important;
+// }
 
-.list-group-item,
-.card {
-  background-color: $sfb-5 !important;
-}
+// .list-group-item,
+// .card {
+//   background-color: $sfb-5 !important;
+// }
 
-.list-group-item-action {
-  color: $sfb-2 !important;
-}
+// .list-group-item-action {
+//   color: $sfb-2 !important;
+// }
 
-.navbar-text {
-  color: $st-orange !important;
-}
+// .navbar-text {
+//   color: $st-orange !important;
+// }
 
-.dropdown-menu, .dropdown-item {
-  color: $st-orange !important;
-  background-color: $sfb-3 !important;
-}
+// .dropdown-menu, .dropdown-item {
+//   color: $st-orange !important;
+//   background-color: $sfb-3 !important;
+// }
 
 // Custom CSS
 .gd-bm-container {
@@ -61,13 +61,14 @@ $sfb-1: #e4eff0;
 }
 
 .gd-bm-icon {
-  color: $sfb-4;
-  font-size: 2rem;
-  cursor: pointer;
+  font-size: 1.5rem;
+  width: 27px;
+  height: 27px;
 }
 
-.gd-bm-icon:hover {
-  color: $sfb-2;
+.gd-bm-link {
+  color: $sfb-1 !important;
+  font-size: 1.5rem;
 }
 
 @media (min-width: 992px) {

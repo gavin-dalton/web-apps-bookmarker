@@ -56,35 +56,43 @@ const getLocalStorage = (obj) => {
  * @param {string} obj Dummy local storage identifier
  */
 const getMockStorage = (obj) => {
+  // https://github.com/kelektiv/node-uuid
   const response = {
     statusOK: true,
     // statusOK: false,
     data: [
       {
+        siteId: '347cf222-887b-11e9-bc42-526af7764f64',
         siteName: 'Google',
         siteURL: 'https://www.google.co.za'
       },
       {
+        siteId: '347cf4ca-887b-11e9-bc42-526af7764f64',
         siteName: 'Standard Bank',
         siteURL: 'https://www.google.co.za'
       },
       {
+        siteId: '347cf632-887b-11e9-bc42-526af7764f64',
         siteName: 'Banana Tree',
         siteURL: 'https://www.google.co.za'
       },
       {
+        siteId: '347cf786-887b-11e9-bc42-526af7764f64',
         siteName: 'First National Bank',
         siteURL: 'https://www.google.co.za'
       },
       {
+        siteId: '347cf9ac-887b-11e9-bc42-526af7764f64',
         siteName: 'Apple Trees',
         siteURL: 'https://www.google.co.za'
       },
       {
+        siteId: '347cfb0a-887b-11e9-bc42-526af7764f64',
         siteName: 'Hello World',
         siteURL: 'https://www.google.co.za'
       },
       {
+        siteId: '347cfc54-887b-11e9-bc42-526af7764f64',
         siteName: 'Batman',
         siteURL: 'https://www.batman.com'
       }
