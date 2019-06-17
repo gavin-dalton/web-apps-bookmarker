@@ -24,7 +24,7 @@ const Header = () => {
         ><i className="fa fa-home"></i></a>
         <span
           className="navbar-text text-white h4 m-0"
-        >BooKMARKER</span>
+        >BookMARKER</span>
 
         <button
           className="navbar-toggler btn btn-outline-primary"

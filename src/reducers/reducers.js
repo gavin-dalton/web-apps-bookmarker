@@ -11,21 +11,26 @@ export const BookmarkReducer = (state, action) => {
       return {
         ...state,
         isLoading: true,
-        isEmpty: false,
+        isEmpty: false
       };
     case 'BM_LOADED':
       return {
         ...state,
         isLoading: false,
-        isEmpty: false,
-        bookmarks: action.payload
+        isEmpty: false
       };
     case 'BM_EMPTY':
       return {
         ...state,
         isLoading: false,
-        isEmpty: true,
-        bookmarks: []
+        isEmpty: true
+      };
+    case 'BM_SAVE':
+      return {
+        ...state,
+        isLoading: false,
+        isEmpty: false,
+        bookmarks: action.payload
       };
     default:
       throw new Error(`Reducer action type not defined: ${action.type}`);

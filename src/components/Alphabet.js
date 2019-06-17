@@ -21,13 +21,13 @@ const Alphabet = (props) => {
   }, [props.route]);
 
   return (
-    <div>
+    <div className="gd-bm-alpha-container">
       {index && index.map((v, i) => {
         return (
           <NavLink
             key={i}
             to={v === '**' ? '/' : `/filter/${v}`}
-            className="btn btn-outline-primary mt-2 mx-2"
+            className="btn btn-outline-primary mt-2 mx-2 btn-block"
             activeClassName="bg-secondary"
           >{v}</NavLink>
         );

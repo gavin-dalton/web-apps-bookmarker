@@ -22,6 +22,7 @@ const App = () => {
             <Route path="/" exact component={Content} />
             <Route path="/filter/:id" component={Content} />
             <Route path="/edit/:id" component={Editor} />
+            <Route path="/copy/:id" component={Editor} />
             <Route path="/delete/:id" component={Delete} />
             <Route path="/new" component={Editor} />
             <Route path="/download" component={Download} />

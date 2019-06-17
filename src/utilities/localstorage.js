@@ -64,58 +64,48 @@ const getMockStorage = (obj) => {
       {
         siteId: '347cf222-887b-11e9-bc42-526af7764f64',
         siteName: 'Google',
-        siteURL: 'https://www.google.co.za'
+        siteURL: 'https://www.google.co.za',
+        order: 0
       },
       {
         siteId: '347cf4ca-887b-11e9-bc42-526af7764f64',
         siteName: 'Standard Bank',
-        siteURL: 'https://www.google.co.za'
+        siteURL: 'https://www.google.co.za',
+        order: 0
       },
       {
         siteId: '347cf632-887b-11e9-bc42-526af7764f64',
         siteName: 'Banana Tree',
-        siteURL: 'https://www.google.co.za'
+        siteURL: 'https://www.google.co.za',
+        order: 0
       },
       {
         siteId: '347cf786-887b-11e9-bc42-526af7764f64',
         siteName: 'First National Bank',
-        siteURL: 'https://www.google.co.za'
+        siteURL: 'https://www.google.co.za',
+        order: 0
       },
       {
         siteId: '347cf9ac-887b-11e9-bc42-526af7764f64',
         siteName: 'Apple Trees',
-        siteURL: 'https://www.google.co.za'
+        siteURL: 'https://www.google.co.za',
+        order: 0
       },
       {
         siteId: '347cfb0a-887b-11e9-bc42-526af7764f64',
         siteName: 'Hello World',
-        siteURL: 'https://www.google.co.za'
+        siteURL: 'https://www.google.co.za',
+        order: 0
       },
       {
         siteId: '347cfc54-887b-11e9-bc42-526af7764f64',
         siteName: 'Batman',
-        siteURL: 'https://www.batman.com'
+        siteURL: 'https://www.batman.com',
+        order: 0
       }
     ]
   };
   return response;
-}
-
-/**
- * Append item to local storage
- * @param {string} obj Local storage identifier
- * @param {any} data Data object to store
- */
-const addLocalStorage = (obj, data) => {
-  let storedData = JSON.parse(localStorage.getItem(obj));
-  if (storedData) {
-    storedData.push(data);
-  } else {
-    storedData = []
-    storedData.push(data);
-  }
-  localStorage.setItem(obj, JSON.stringify(storedData));
-  return true;
 }
 
 /**
@@ -128,27 +118,8 @@ const saveLocalStorage = (obj, data) => {
   return true;
 }
 
-/**
- * Remove item from local storage
- * @param {string} obj Local storage identifier
- * @param {any} data Data object to remove
- * @param {string} member Data object member to filter on
- */
-const removeLocalStorage = (obj, data, member) => {
-  const storedData = JSON.parse(localStorage.getItem(obj));
-  let newData = [];
-  // Need a polyfill to support IE
-  // https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Array/filter
-  newData = storedData.filter((item) => { return item[member] !== data[member] })
-  // console.log(newData);
-  localStorage.setItem(obj, JSON.stringify(newData));
-  return true;
-}
-
 // Export module methods
 module.exports.isLocalStorage = isLocalStorage;
 module.exports.getLocalStorage = getLocalStorage;
-module.exports.addLocalStorage = addLocalStorage;
-module.exports.saveLocalStorage = saveLocalStorage;
-module.exports.removeLocalStorage = removeLocalStorage;
 module.exports.getMockStorage = getMockStorage;
+module.exports.saveLocalStorage = saveLocalStorage;

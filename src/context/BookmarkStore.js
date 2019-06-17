@@ -1,6 +1,10 @@
 import React, { useReducer } from 'react';
 import { BookmarkReducer } from '../reducers/reducers';
-import { isLocalStorage, getMockStorage, getLocalStorage } from '../utilities/localstorage'
+import {
+  isLocalStorage,
+  // getMockStorage,
+  getLocalStorage
+} from '../utilities/localstorage';
 
 /**
  * Helper function to fetch initial bookmark list
@@ -10,8 +14,8 @@ const getBookmarks = () => {
   let bookmarks = [];
   let storedData = {};
   if (isLocalStorage) {
-    // storedData = getLocalStorage('gd-bm-bookmarks');
-    storedData = getMockStorage('gd-bm-bookmarks');
+    storedData = getLocalStorage('gd-bm-bookmarks');
+    // storedData = getMockStorage('gd-bm-bookmarks');
     if (storedData.statusOK) {
       bookmarks = storedData.data;
     }

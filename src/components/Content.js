@@ -11,7 +11,7 @@ const Content = (props) => {
 
   return (
     <div className="d-flex flex-nowrap">
-      <div className="gd-bm-flex-alpha">
+      <div className="gd-bm-alpha-flex">
         <Alphabet route={route} />
       </div>
       <div className="w-100">

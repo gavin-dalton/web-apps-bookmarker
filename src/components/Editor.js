@@ -1,64 +1,103 @@
-import React, { useState, useEffect } from 'react';
-// import { BookmarkContext } from '../context/BookmarkStore';
+import React, { useState, useEffect, useContext } from 'react';
+import uuidv1 from 'uuid/v1';
+import collection from 'lodash/collection';
+import { BookmarkContext } from '../context/BookmarkStore';
+import { saveLocalStorage } from '../utilities/localstorage';
+
+const bookmarkInit = { siteName: '', siteURL: '' };
 
 const Editor = (props) => {
-  const [mode, setMode] = useState('');
-  const [site, setSite] = useState({ siteId: '', siteName: '', siteURL: '' });
-  // const [state, dispatch] = useContext(BookmarkContext);
+  const [mode, setMode] = useState('NEW');
+  const [bookmark, setBookmark] = useState(bookmarkInit);
+  const [state, dispatch] = useContext(BookmarkContext);
 
+  // Set editor mode effect
   useEffect(() => {
-    const path = props.match.path;
-    let id = '';
-
-    if (path === '/edit/:id') {
-      id = props.match.params.id;
-      console.log('Editor: id...', id);
-      setMode('EDIT');
-    } else {
-      setMode('NEW');
-    }
-    console.log('Editor: mode...', mode);
+    let bookmarkToEdit = [];
+    switch (props.match.path) {
+      case '/edit/:id':
+        bookmarkToEdit = collection.filter(state.bookmarks, (o) => { return o.siteId === props.match.params.id });
+        setBookmark({
+          siteName: bookmarkToEdit[0].siteName,
+          siteURL: bookmarkToEdit[0].siteURL
+        });
+        setMode('EDIT');
+        break;
+      case '/copy/:id':
+        bookmarkToEdit = collection.filter(state.bookmarks, (o) => { return o.siteId === props.match.params.id });
+        setBookmark({
+          siteName: bookmarkToEdit[0].siteName,
+          siteURL: bookmarkToEdit[0].siteURL
+        });
+        setMode('COPY');
+        break;
+      default:
+        setMode('NEW');
+        setBookmark(bookmarkInit);
+        break;
+    };
 
     // Effect clean-up function
     // console.log('Editor: Effect cleanup...');
     return () => true;
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [mode])
+  }, [props.match.path])
 
   const handleSave = (e) => {
     e.preventDefault();
-    console.log('Editor: siteId............', site.siteId);
-    console.log('Editor: siteURL...........', site.siteURL);
-    console.log('Editor: siteName..........', site.siteName);
+    let bookmarks = [];
+    switch (mode) {
+      case 'EDIT':
+
+        break;
+      case 'COPY':
+        bookmarks = [...state.bookmarks, { siteId: uuidv1(), ...bookmark }];
+        saveLocalStorage('gd-bm-bookmarks', bookmarks);
+        dispatch({ type: 'BM_SAVE', payload: bookmarks });
+        break;
+      default:
+        bookmarks = [...state.bookmarks, { siteId: uuidv1(), ...bookmark }];
+        saveLocalStorage('gd-bm-bookmarks', bookmarks);
+        dispatch({ type: 'BM_SAVE', payload: bookmarks });
+        break;
+    };
+
+    console.log('Editor: bookmark..........', bookmark);
+    console.log('Editor: bookmarks.........', bookmarks);
+    // saveLocalStorage('gd-bm-bookmarks', bookmarks);
+    // dispatch({ type: 'BM_SAVE', payload: bookmarks });
     // console.log('Editor: state.bookmarks...', state.bookmarks);
+
+    props.history.goBack();
   };
 
   const handleCancel = (e) => {
     e.preventDefault();
-    setSite({ siteId: '', siteName: '', siteURL: '' });
+    setBookmark(bookmarkInit);
     props.history.goBack();
   };
 
   const handleURL = (e) => {
     if (!e.target.value) {
-      setSite({ ...site, siteURL: 'https://www.' });
+      setBookmark({ ...bookmark, siteURL: 'https://www..com' });
     }
   };
 
-  console.log('Editor: props...', props);
+  // console.log('Editor: props...', props);
 
   return (
     <div className="container">
       <div className="border border-primary rounded-lg my-2 p-3">
         <form autoComplete="off" onSubmit={handleSave}>
-          <div className="form-group mb-0">
+          <div className="form-group input-group-lg mb-0">
             <input
               className="form-control mb-2"
               type="text"
               placeholder="Site Name e.g. Google Home"
               name="siteName"
-              value={site.siteName}
-              onChange={e => setSite({ ...site, siteName: e.target.value })}
+              value={bookmark.siteName}
+              onChange={e => setBookmark({ ...bookmark, siteName: e.target.value })}
+              required={true}
             />
             <input
               className="form-control mb-3"
@@ -66,20 +105,15 @@ const Editor = (props) => {
               placeholder="Site URL e.g. https://www.site.com"
               pattern="(http:\/\/www\.|https:\/\/www\.|http:\/\/|https:\/\/)?[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?"
               name="siteURL"
-              value={site.siteURL}
-              onChange={e => setSite({ ...site, siteURL: e.target.value })}
+              value={bookmark.siteURL}
+              onChange={e => setBookmark({ ...bookmark, siteURL: e.target.value })}
               onFocus={handleURL}
+              required={true}
             />
-            {mode === 'EDIT' ? (
-              <button
-                className="btn btn-outline-success mr-2"
-                type="submit"
-              >Update</button>
-            ) : (null)}
             <button
-              className="btn btn-outline-primary mr-2"
+              className="btn btn-outline-success mr-2"
               type="submit"
-            >Save as New</button>
+            >Save</button>
             <button
               className="btn btn-outline-warning"
               onClick={handleCancel}
