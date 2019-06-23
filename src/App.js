@@ -13,20 +13,22 @@ import './assets/Bookmarker.scss';
 import { isLocalStorage } from './utilities/localstorage'
 
 const App = () => {
+  const root = window.location.pathname;
+  // console.log('App: root...', root);
   return (
     <>
       {isLocalStorage() ? (
         <Router>
-          <Header />
+          <Header root={root}/>
           <Switch>
-            <Route path="/" exact component={Content} />
-            <Route path="/filter/:id" component={Content} />
-            <Route path="/edit/:id" component={Editor} />
-            <Route path="/copy/:id" component={Editor} />
-            <Route path="/delete/:id" component={Delete} />
-            <Route path="/new" component={Editor} />
-            <Route path="/download" component={Download} />
-            <Route path="/settings" component={Settings} />
+            <Route path={root} exact component={Content} />
+            <Route path={`${root}filter/:id`} component={Content} />
+            <Route path={`${root}edit/:id`} component={Editor} />
+            <Route path={`${root}copy/:id`} component={Editor} />
+            <Route path={`${root}delete/:id`} component={Delete} />
+            <Route path={`${root}new`} component={Editor} />
+            <Route path={`${root}download`} component={Download} />
+            <Route path={`${root}settings`} component={Settings} />
             <Route component={PageNotFound} />
           </Switch>
         </Router>

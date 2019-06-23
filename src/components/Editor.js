@@ -9,33 +9,39 @@ const bookmarkInit = { order: 0, siteName: '', siteURL: '' };
 const Editor = (props) => {
   const [mode, setMode] = useState('NEW');
   const [bookmark, setBookmark] = useState(bookmarkInit);
+  const [title, setTitle] = useState('Loading...');
   const [state, dispatch] = useContext(BookmarkContext);
 
   // Set editor mode effect
   useEffect(() => {
     let targetBookmark = [];
-    switch (props.match.path) {
-      case '/edit/:id':
-        targetBookmark = collection.filter(state.bookmarks, (o) => { return o.siteId === props.match.params.id });
-        setBookmark({
-          siteName: targetBookmark[0].siteName,
-          siteURL: targetBookmark[0].siteURL
-        });
-        setMode('EDIT');
-        break;
-      case '/copy/:id':
-        targetBookmark = collection.filter(state.bookmarks, (o) => { return o.siteId === props.match.params.id });
-        setBookmark({
-          siteName: targetBookmark[0].siteName,
-          siteURL: targetBookmark[0].siteURL
-        });
-        setMode('COPY');
-        break;
-      default:
-        setMode('NEW');
-        setBookmark(bookmarkInit);
-        break;
-    };
+    // console.log(props.match.path.indexOf('edit/:id'));
+
+    if (props.match.path.indexOf('edit/:id') > -1) {
+      targetBookmark = collection.filter(state.bookmarks, (o) => { return o.siteId === props.match.params.id });
+      setBookmark({
+        siteName: targetBookmark[0].siteName,
+        siteURL: targetBookmark[0].siteURL
+      });
+      setMode('EDIT');
+      setTitle('Edit bookmark');
+    }
+
+    if (props.match.path.indexOf('copy/:id') > -1) {
+      targetBookmark = collection.filter(state.bookmarks, (o) => { return o.siteId === props.match.params.id });
+      setBookmark({
+        siteName: targetBookmark[0].siteName,
+        siteURL: targetBookmark[0].siteURL
+      });
+      setMode('COPY');
+      setTitle('Copy bookmark');
+    }
+
+    if (props.match.path.indexOf('new') > -1) {
+      setMode('NEW');
+      setTitle('New bookmark');
+      setBookmark(bookmarkInit);
+    }
 
     // Effect clean-up function
     // console.log('Editor: Effect cleanup...');
@@ -57,7 +63,7 @@ const Editor = (props) => {
             })
           } else { bookmarks.push({ ...v }) }
         })
-        console.log('Editor: bookmarks.edit...', bookmarks);
+        // console.log('Editor: bookmarks.edit...', bookmarks);
         saveLocalStorage('gd-bm-bookmarks', bookmarks);
         dispatch({ type: 'BM_SAVE', payload: bookmarks });
         break;
@@ -102,6 +108,7 @@ const Editor = (props) => {
   return (
     <div className="container">
       <div className="border border-primary rounded-lg my-2 p-3">
+        <h4>{title}</h4>
         <form autoComplete="off" onSubmit={handleSave}>
           <div className="form-group input-group-lg mb-0">
             <input

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from "react-router-dom";
 
-const Header = () => {
+const Header = (props) => {
 
   // Tries to toggle the navbar
   const collapseNavBar = () => {
@@ -41,7 +41,7 @@ const Header = () => {
           <div className="navbar-nav ml-auto">
             <Link
               className="btn btn-outline-primary mr-lg-2 mr-0 mt-2 mt-lg-0"
-              to="/new"
+              to={`${props.root}new`}
               data-toggle="tooltip"
               data-placement="bottom"
               title="Create new bookmark"
@@ -59,12 +59,12 @@ const Header = () => {
                 className="dropdown-menu dropdown-menu-right mt-2" aria-labelledby="gd-bm-options">
                 <Link
                   className="dropdown-item"
-                  to="/download"
+                  to={`${props.root}download`}
                   onClick={collapseNavBar}
                 >Download my bookmarks</Link>
                 <Link
                   className="dropdown-item"
-                  to="/settings"
+                  to={`${props.root}settings`}
                   onClick={collapseNavBar}
                 >Settings</Link>
               </div>
