@@ -41,26 +41,26 @@ const Bookmarks = (props) => {
                     </div>
                     <div className="flex-grow-0 flex-shrink-0">
                       <Link
-                        className="btn btn-outline-success rounded-pill mx-2"
+                        className="btn btn-outline-success mx-2"
                         to={`/edit/${bookmark.siteId}`}
                         data-toggle="tooltip"
                         data-placement="top"
                         title="Edit"
-                      ><i className="far fa-edit gd-bm-action-icon"></i></Link>
+                      ><i className="far fa-edit"></i></Link>
                       <Link
-                        className="btn btn-outline-primary rounded-pill mr-2"
+                        className="btn btn-outline-primary mr-2"
                         to={`/copy/${bookmark.siteId}`}
                         data-toggle="tooltip"
                         data-placement="top"
                         title="Copy"
-                      ><i className="far fa-copy gd-bm-action-icon"></i></Link>
+                      ><i className="far fa-copy"></i></Link>
                       <Link
-                        className="btn btn-outline-danger rounded-pill"
+                        className="btn btn-outline-danger"
                         to={`/delete/${index}~${bookmark.siteId}`}
                         data-toggle="tooltip"
                         data-placement="top"
                         title="Delete"
-                      ><i className="far fa-trash-alt gd-bm-action-icon"></i></Link>
+                      ><i className="far fa-trash-alt"></i></Link>
                     </div>
                   </div>
                 );

@@ -4,7 +4,7 @@ import collection from 'lodash/collection';
 import { BookmarkContext } from '../context/BookmarkStore';
 import { saveLocalStorage } from '../utilities/localstorage';
 
-const bookmarkInit = { siteName: '', siteURL: '' };
+const bookmarkInit = { order: 0, siteName: '', siteURL: '' };
 
 const Editor = (props) => {
   const [mode, setMode] = useState('NEW');
@@ -13,21 +13,21 @@ const Editor = (props) => {
 
   // Set editor mode effect
   useEffect(() => {
-    let bookmarkToEdit = [];
+    let targetBookmark = [];
     switch (props.match.path) {
       case '/edit/:id':
-        bookmarkToEdit = collection.filter(state.bookmarks, (o) => { return o.siteId === props.match.params.id });
+        targetBookmark = collection.filter(state.bookmarks, (o) => { return o.siteId === props.match.params.id });
         setBookmark({
-          siteName: bookmarkToEdit[0].siteName,
-          siteURL: bookmarkToEdit[0].siteURL
+          siteName: targetBookmark[0].siteName,
+          siteURL: targetBookmark[0].siteURL
         });
         setMode('EDIT');
         break;
       case '/copy/:id':
-        bookmarkToEdit = collection.filter(state.bookmarks, (o) => { return o.siteId === props.match.params.id });
+        targetBookmark = collection.filter(state.bookmarks, (o) => { return o.siteId === props.match.params.id });
         setBookmark({
-          siteName: bookmarkToEdit[0].siteName,
-          siteURL: bookmarkToEdit[0].siteURL
+          siteName: targetBookmark[0].siteName,
+          siteURL: targetBookmark[0].siteURL
         });
         setMode('COPY');
         break;
@@ -48,22 +48,36 @@ const Editor = (props) => {
     let bookmarks = [];
     switch (mode) {
       case 'EDIT':
-
+        state.bookmarks.forEach((v, i, a) => {
+          if (props.match.params.id === v.siteId) {
+            bookmarks.push({
+              ...v,
+              siteName: bookmark.siteName,
+              siteURL: bookmark.siteURL
+            })
+          } else { bookmarks.push({ ...v }) }
+        })
+        console.log('Editor: bookmarks.edit...', bookmarks);
+        saveLocalStorage('gd-bm-bookmarks', bookmarks);
+        dispatch({ type: 'BM_SAVE', payload: bookmarks });
         break;
       case 'COPY':
         bookmarks = [...state.bookmarks, { siteId: uuidv1(), ...bookmark }];
         saveLocalStorage('gd-bm-bookmarks', bookmarks);
         dispatch({ type: 'BM_SAVE', payload: bookmarks });
         break;
-      default:
+      case 'NEW':
         bookmarks = [...state.bookmarks, { siteId: uuidv1(), ...bookmark }];
         saveLocalStorage('gd-bm-bookmarks', bookmarks);
         dispatch({ type: 'BM_SAVE', payload: bookmarks });
         break;
+      default:
+        // Nothing to do
+        break;
     };
 
-    console.log('Editor: bookmark..........', bookmark);
-    console.log('Editor: bookmarks.........', bookmarks);
+    // console.log('Editor: bookmark..........', bookmark);
+    // console.log('Editor: bookmarks.........', bookmarks);
     // saveLocalStorage('gd-bm-bookmarks', bookmarks);
     // dispatch({ type: 'BM_SAVE', payload: bookmarks });
     // console.log('Editor: state.bookmarks...', state.bookmarks);
