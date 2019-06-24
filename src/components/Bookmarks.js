@@ -20,7 +20,7 @@ const Bookmarks = (props) => {
   }, [props.route]);
 
   // console.log('Bookmarks: state...', state);
-  console.log('Bookmarks: props...', props);
+  // console.log('Bookmarks: props...', props);
 
   return (
     <>

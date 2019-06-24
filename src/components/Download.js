@@ -1,7 +1,7 @@
 import React from 'react';
 
 const Download = (props) => {
-  console.log('Download: props...', props);
+  // console.log('Download: props...', props);
   return (
     <div className="container">
       <div className="border border-warning rounded-lg text-center mt-5 p-3">

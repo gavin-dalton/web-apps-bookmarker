@@ -1,7 +1,7 @@
 import React from 'react';
 
 const Settings = (props) => {
-  console.log('Settings: props...', props);
+  // console.log('Settings: props...', props);
   return (
     <div className="container">
       <div className="border border-warning rounded-lg text-center mt-5 p-3">
