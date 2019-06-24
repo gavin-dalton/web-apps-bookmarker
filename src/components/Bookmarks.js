@@ -20,7 +20,7 @@ const Bookmarks = (props) => {
   }, [props.route]);
 
   // console.log('Bookmarks: state...', state);
-  // console.log('Bookmarks: props...', props);
+  console.log('Bookmarks: props...', props);
 
   return (
     <>
@@ -28,7 +28,7 @@ const Bookmarks = (props) => {
         !state.isEmpty ? (
           <div className="list-group mt-2 mr-2">
             {state.bookmarks.map((bookmark, index) => {
-              if (bookmark.siteName.slice(0, 1) === props.route || props.route === '/') {
+              if (bookmark.siteName.slice(0, 1).toUpperCase() === props.route || props.route === '/') {
                 return (
                   <div className="d-flex flex-nowrap align-items-center mb-2" key={index}>
                     <div className="w-100">
@@ -64,11 +64,11 @@ const Bookmarks = (props) => {
                     </div>
                   </div>
                 );
-              } else { return null }
+              } else { return null; }
             })}
           </div>
         ) : (
-            <h3 className="text-warning text-center m-5">Oops! You have no bookmarks.</h3>
+            <h4 className="text-warning text-center m-5">Oops! You have no bookmarks.</h4>
           )
       ) : (
           null

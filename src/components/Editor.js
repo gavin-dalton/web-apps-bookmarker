@@ -20,6 +20,7 @@ const Editor = (props) => {
     if (props.match.path.indexOf('edit/:id') > -1) {
       targetBookmark = collection.filter(state.bookmarks, (o) => { return o.siteId === props.match.params.id });
       setBookmark({
+        ...bookmark,
         siteName: targetBookmark[0].siteName,
         siteURL: targetBookmark[0].siteURL
       });
@@ -30,6 +31,7 @@ const Editor = (props) => {
     if (props.match.path.indexOf('copy/:id') > -1) {
       targetBookmark = collection.filter(state.bookmarks, (o) => { return o.siteId === props.match.params.id });
       setBookmark({
+        ...bookmark,
         siteName: targetBookmark[0].siteName,
         siteURL: targetBookmark[0].siteURL
       });
@@ -84,8 +86,6 @@ const Editor = (props) => {
 
     // console.log('Editor: bookmark..........', bookmark);
     // console.log('Editor: bookmarks.........', bookmarks);
-    // saveLocalStorage('gd-bm-bookmarks', bookmarks);
-    // dispatch({ type: 'BM_SAVE', payload: bookmarks });
     // console.log('Editor: state.bookmarks...', state.bookmarks);
 
     props.history.goBack();
