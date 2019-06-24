@@ -13,29 +13,30 @@ import './assets/Bookmarker.scss';
 import { isLocalStorage } from './utilities/localstorage'
 
 const App = () => {
-  const root = window.location.pathname;
-  // console.log('App: root...', root);
+  // https://medium.com/@svinkle/how-to-deploy-a-react-app-to-a-subdirectory-f694d46427c1
+  const root = '/apps/web-apps-bookmarker';
+  
   return (
     <>
       {isLocalStorage() ? (
-        <Router>
-          <Header root={root}/>
+        <Router basename={root}>
+          <Header />
           <Switch>
-            <Route path={root} exact component={Content} />
-            <Route path={`${root}filter/:id`} component={Content} />
-            <Route path={`${root}edit/:id`} component={Editor} />
-            <Route path={`${root}copy/:id`} component={Editor} />
-            <Route path={`${root}delete/:id`} component={Delete} />
-            <Route path={`${root}new`} component={Editor} />
-            <Route path={`${root}download`} component={Download} />
-            <Route path={`${root}settings`} component={Settings} />
-            <Route component={PageNotFound} />
+            <Route path="/" exact     component={Content} />
+            <Route path="/filter/:id" component={Content} />
+            <Route path="/edit/:id"   component={Editor} />
+            <Route path="/copy/:id"   component={Editor} />
+            <Route path="/delete/:id" component={Delete} />
+            <Route path="/new"        component={Editor} />
+            <Route path="/download"   component={Download} />
+            <Route path="/settings"   component={Settings} />
+            <Route                    component={PageNotFound} />
           </Switch>
         </Router>
       ) : (
           <div className="text-warning text-center my-5">
             <h3>Your browser doesn't support local storage. This leaves the Bookmarker application useless on your browser.</h3>
-            <a className="btn btn-block mt-3" href='/'>Back to OpenApps</a>
+            <a className="btn btn-block mt-3" href="/">Back to OpenApps</a>
           </div>
         )
       }

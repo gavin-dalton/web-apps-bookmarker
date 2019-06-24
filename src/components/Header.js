@@ -41,7 +41,7 @@ const Header = (props) => {
           <div className="navbar-nav ml-auto">
             <Link
               className="btn btn-outline-primary mr-lg-2 mr-0 mt-2 mt-lg-0"
-              to={`${props.root}new`}
+              to={`/new`}
               data-toggle="tooltip"
               data-placement="bottom"
               title="Create new bookmark"
@@ -59,12 +59,12 @@ const Header = (props) => {
                 className="dropdown-menu dropdown-menu-right mt-2" aria-labelledby="gd-bm-options">
                 <Link
                   className="dropdown-item"
-                  to={`${props.root}download`}
+                  to={`/download`}
                   onClick={collapseNavBar}
                 >Download my bookmarks</Link>
                 <Link
                   className="dropdown-item"
-                  to={`${props.root}settings`}
+                  to={`/settings`}
                   onClick={collapseNavBar}
                 >Settings</Link>
               </div>

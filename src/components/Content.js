@@ -5,9 +5,9 @@ import Alphabet from './Alphabet';
 import Bookmarks from './Bookmarks';
 
 const Content = (props) => {
-  // console.log('Content: props...', props);
-  const route = props.match.params.id ? props.match.params.id : '/';
-  // console.log('Content: route...', route);
+  console.log('Content: props...', props);
+  const route = props.match.params.id ? props.match.params.id : props.location.pathname;
+  console.log('Content: route...', route);
 
   return (
     <div className="d-flex flex-nowrap">
