@@ -2,17 +2,47 @@ import React, { useContext, useEffect } from 'react';
 import { Link } from "react-router-dom";
 import { BookmarkContext } from '../context/BookmarkStore';
 
+// Dynamic links component based on screen size
+const Links = (props) => {
+  const mode = props.compact ? ' dropdown-item' : '';
+  return (
+    <>
+      <Link
+        className={props.compact ? 'dropdown-item' : 'btn btn-outline-success mx-2'}
+        to={`/edit/${props.siteId}`}
+        data-toggle="tooltip"
+        data-placement="top"
+        title="Edit"
+      >{props.compact ? 'Edit' : (<i className="far fa-edit"></i>)}</Link>
+      <Link
+        className={props.compact ? 'dropdown-item' : 'btn btn-outline-primary mr-2'}
+        to={`/copy/${props.siteId}`}
+        data-toggle="tooltip"
+        data-placement="top"
+        title="Copy"
+      >{props.compact ? 'Copy' : (<i className="far fa-copy"></i>)}</Link>
+      <Link
+        className={props.compact ? 'dropdown-item' : 'btn btn-outline-danger'}
+        to={`/delete/${props.index}~${props.siteId}`}
+        data-toggle="tooltip"
+        data-placement="top"
+        title="Delete"
+      >{props.compact ? 'Delete' : (<i className="far fa-trash-alt"></i>)}</Link>
+    </>
+  )
+}
+
 const Bookmarks = (props) => {
   const [state, dispatch] = useContext(BookmarkContext);
 
   useEffect(() => {
     // dispatch({ type: 'BM_LOADING' })
     // setTimeout(() => {
-      if (state.bookmarks.length > 0) {
-        dispatch({ type: 'BM_LOADED' });
-      } else {
-        dispatch({ type: 'BM_EMPTY' });
-      }
+    if (state.bookmarks.length > 0) {
+      dispatch({ type: 'BM_LOADED' });
+    } else {
+      dispatch({ type: 'BM_EMPTY' });
+    }
     // }, 500);
     // Effect clean-up function
     return () => true;
@@ -40,27 +70,23 @@ const Bookmarks = (props) => {
                       >{bookmark.siteName}</a>
                     </div>
                     <div className="flex-grow-0 flex-shrink-0">
-                      <Link
-                        className="btn btn-outline-success mx-2"
-                        to={`/edit/${bookmark.siteId}`}
-                        data-toggle="tooltip"
-                        data-placement="top"
-                        title="Edit"
-                      ><i className="far fa-edit"></i></Link>
-                      <Link
-                        className="btn btn-outline-primary mr-2"
-                        to={`/copy/${bookmark.siteId}`}
-                        data-toggle="tooltip"
-                        data-placement="top"
-                        title="Copy"
-                      ><i className="far fa-copy"></i></Link>
-                      <Link
-                        className="btn btn-outline-danger"
-                        to={`/delete/${index}~${bookmark.siteId}`}
-                        data-toggle="tooltip"
-                        data-placement="top"
-                        title="Delete"
-                      ><i className="far fa-trash-alt"></i></Link>
+                      <div className="d-block d-sm-block d-md-none ml-2">
+                        <div className="btn-group dropleft">
+                          <button
+                            type="button"
+                            className="btn btn-outline-primary dropdown-toggle"
+                            data-toggle="dropdown"
+                            aria-haspopup="true"
+                            aria-expanded="false"
+                          >Action</button>
+                          <div className="dropdown-menu">
+                            <Links compact={true} siteId={bookmark.siteId} index={index} />
+                          </div>
+                        </div>
+                      </div>
+                      <div className="d-none d-sm-none d-md-block">
+                        <Links compact={false} siteId={bookmark.siteId} index={index} />
+                      </div>
                     </div>
                   </div>
                 );
