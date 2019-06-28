@@ -1,3 +1,3 @@
 # OpenApps - Bookmarker
 
-Per project, providing a little bookmarker web app.
+Pet project, providing a little bookmarker web app.
