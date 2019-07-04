@@ -64,6 +64,11 @@ const Header = (props) => {
                 >Download my bookmarks</Link>
                 <Link
                   className="dropdown-item"
+                  to={`/upload`}
+                  onClick={collapseNavBar}
+                >Upload my bookmarks</Link>
+                <Link
+                  className="dropdown-item"
                   to={`/settings`}
                   onClick={collapseNavBar}
                 >Settings</Link>

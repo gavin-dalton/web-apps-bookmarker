@@ -4,7 +4,6 @@ import { BookmarkContext } from '../context/BookmarkStore';
 
 // Dynamic links component based on screen size
 const Links = (props) => {
-  const mode = props.compact ? ' dropdown-item' : '';
   return (
     <>
       <Link
@@ -74,11 +73,11 @@ const Bookmarks = (props) => {
                         <div className="btn-group dropleft">
                           <button
                             type="button"
-                            className="btn btn-outline-primary dropdown-toggle"
+                            className="btn btn-outline-secondary dropdown-toggle"
                             data-toggle="dropdown"
                             aria-haspopup="true"
                             aria-expanded="false"
-                          >Action</button>
+                          ></button>
                           <div className="dropdown-menu">
                             <Links compact={true} siteId={bookmark.siteId} index={index} />
                           </div>

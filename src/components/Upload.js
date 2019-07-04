@@ -1,22 +1,15 @@
 import React, { useState, useEffect } from 'react';
 
-const Download = (props) => {
-  const [bookmarks, setBookmarks] = useState([]);
+const Upload = (props) => {
+  const [bookmarks, setBookmarks] = useState('');
 
-  useEffect(() => {
-    setBookmarks(localStorage.getItem('gd-bm-bookmarks'));
-    // Effect clean-up function
-    return () => true;
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
-
-  console.log('Download: bokmarks...', bookmarks);
+  // console.log('Upload: props...', props);
 
   return (
     <div className="mx-2">
       <div className="border border-primary rounded-lg my-2 p-3">
-        <h4>Download</h4>
-        <p>Copy content to a text file</p>
+        <h4>Upload</h4>
+        <p>Paste your saved bookmarks in the text area below</p>
         <div className="d-flex flex-row">
           <textarea
             className="w-100 gd-bm-textarea"
@@ -34,4 +27,4 @@ const Download = (props) => {
   );
 };
 
-export default Download;
+export default Upload;

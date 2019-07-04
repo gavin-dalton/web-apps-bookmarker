@@ -24,6 +24,11 @@ $sfb-1: #e4eff0;
   font-size: 1rem;
 }
 
+.gd-bm-textarea {
+  height: 50vh;
+  resize: vertical;
+}
+
 @media (min-width: 992px) {
   .gd-bm-body-container {
     max-width: 992px;

@@ -7,6 +7,7 @@ import Content from './components/Content';
 import Editor from './components/Editor';
 import Delete from './components/Delete';
 import Download from './components/Download';
+import Upload from './components/Upload';
 import Settings from './components/Settings';
 import PageNotFound from './components/PageNotFound';
 import './assets/Bookmarker.scss';
@@ -26,9 +27,10 @@ const App = () => {
             <Route path="/filter/:id" component={Content} />
             <Route path="/edit/:id"   component={Editor} />
             <Route path="/copy/:id"   component={Editor} />
-            <Route path="/delete/:id" component={Delete} />
             <Route path="/new"        component={Editor} />
+            <Route path="/delete/:id" component={Delete} />
             <Route path="/download"   component={Download} />
+            <Route path="/upload"     component={Upload} />
             <Route path="/settings"   component={Settings} />
             <Route                    component={PageNotFound} />
           </Switch>
