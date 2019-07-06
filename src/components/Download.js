@@ -2,15 +2,41 @@ import React, { useState, useEffect } from 'react';
 
 const Download = (props) => {
   const [bookmarks, setBookmarks] = useState([]);
+  const [isDisabled, setIsDisabled] = useState('');
+  const [copyButton, setCopyButton] = useState('Copy');
 
   useEffect(() => {
     setBookmarks(localStorage.getItem('gd-bm-bookmarks'));
     // Effect clean-up function
     return () => true;
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
+  }, []);
 
-  console.log('Download: bokmarks...', bookmarks);
+  useEffect(() => {
+    setTimeout(() => {
+      if (bookmarks.length > 1 && !isDisabled) {
+        setIsDisabled('No');
+        // console.log('Download: isDisabled...', isDisabled);
+      }
+    }, 1000);
+    // Effect clean-up function
+    return () => true;
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [bookmarks]);
+
+  const handleCopy = (e) => {
+    e.preventDefault();
+    /* Get the text field */
+    let copyText = document.getElementById('gd-bm-bookmarks');
+    /* Select the text field */
+    copyText.select();
+    /* Copy the text inside the text field */
+    document.execCommand('copy');
+    setIsDisabled('');
+    setCopyButton('COPIED');
+  };
+
+  // console.log('Download: bookmarks...', bookmarks);
 
   return (
     <div className="mx-2">
@@ -21,11 +47,19 @@ const Download = (props) => {
           <textarea
             className="w-100 gd-bm-textarea"
             defaultValue={bookmarks}
+            id="gd-bm-bookmarks"
           ></textarea>
         </div>
         <div className="d-flex flex-row mt-3">
           <button
-            className="btn btn-outline-warning"
+            type="button"
+            className="btn btn-outline-success"
+            disabled={!isDisabled}
+            onClick={handleCopy}
+          >{copyButton}</button>
+          <button
+            type="button"
+            className="btn btn-outline-warning ml-2"
             onClick={() => { props.history.goBack() }}
           >Back</button>
         </div>
