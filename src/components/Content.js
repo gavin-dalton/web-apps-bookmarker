@@ -14,7 +14,7 @@ const Content = (props) => {
       <div className="gd-bm-alpha-flex">
         <Alphabet route={route} />
       </div>
-      <div className="w-100">
+      <div className="w-100 mb-5">
         <Bookmarks route={route} />
       </div>
     </div>

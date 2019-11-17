@@ -1,12 +1,24 @@
 import React, { useState, useEffect } from 'react';
 
+/**
+ * Helper function to reformat the bookmark list
+ * @param {string} popMe String to pop
+ */
+const stringPop = (popMe) => {
+  let popped = popMe;
+  popped = popped.replace('[', '[\n');
+  popped = popped.replace(']', '\n]');
+  popped = popped.replace(/},{/g, '},\n{');
+  return popped;
+};
+
 const Download = (props) => {
   const [bookmarks, setBookmarks] = useState([]);
   const [isDisabled, setIsDisabled] = useState('');
   const [copyButton, setCopyButton] = useState('Copy');
 
   useEffect(() => {
-    setBookmarks(localStorage.getItem('gd-bm-bookmarks'));
+    setBookmarks(stringPop(localStorage.getItem('gd-bm-bookmarks')));
     // Effect clean-up function
     return () => true;
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -41,7 +53,7 @@ const Download = (props) => {
   return (
     <div className="mx-2">
       <div className="border border-primary rounded-lg my-2 p-3">
-        <h4>Download</h4>
+        <h5>Download</h5>
         <p>Copy content to a text file</p>
         <div className="d-flex flex-row">
           <textarea

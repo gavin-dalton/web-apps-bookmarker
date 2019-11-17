@@ -57,13 +57,12 @@ const Upload = (props) => {
     setSaveButtonDisabled('');
   }
 
-
   // console.log('Upload: props...', props);
 
   return (
     <div className="mx-2">
       <div className="border border-primary rounded-lg my-2 p-3">
-        <h4>Upload</h4>
+        <h5>Upload</h5>
         <p>Paste your saved bookmarks in the text area below</p>
         <div className="d-flex flex-row">
           <textarea

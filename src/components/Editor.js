@@ -108,7 +108,7 @@ const Editor = (props) => {
   return (
     <div className="container">
       <div className="border border-primary rounded-lg my-2 p-3">
-        <h4>{title}</h4>
+        <h5>{title}</h5>
         <form autoComplete="off" onSubmit={handleSave}>
           <div className="form-group input-group-lg mb-0">
             <input

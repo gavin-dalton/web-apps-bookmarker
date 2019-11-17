@@ -21,7 +21,7 @@ const App = () => {
     <>
       {isLocalStorage() ? (
         <Router basename={root}>
-          <Header />
+          <Header home={root}/>
           <Switch>
             <Route path="/" exact     component={Content} />
             <Route path="/filter/:id" component={Content} />

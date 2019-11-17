@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from "react-router-dom";
 
-const Header = (props) => {
+const Header = ({ home }) => {
 
   // Tries to toggle the navbar
   const collapseNavBar = () => {
@@ -11,6 +11,8 @@ const Header = (props) => {
       elToggler[0].click();
     }
   };
+
+  // <span className="navbar-text text-white h4 m-0">BookMARKER</span>
 
   return (
     <>
@@ -22,9 +24,8 @@ const Header = (props) => {
           data-placement="bottom"
           title="Go to OpenApps home page"
         ><i className="fa fa-home"></i></a>
-        <span
-          className="navbar-text text-white h4 m-0"
-        >BookMARKER</span>
+        <a className="navbar-brand m-0 p-0" href={home}
+        ><span className="navbar-text text-white h5 m-0">BookMARKER</span></a>
 
         <button
           className="navbar-toggler btn btn-outline-primary"

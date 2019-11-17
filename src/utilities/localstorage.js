@@ -37,7 +37,7 @@ const getLocalStorage = (obj) => {
     if (storedData) {
       response = {
         statusOK: true,
-        data: storedData
+        data: storedData.sort((a, b) => (a.siteName > b.siteName) ? 1 : -1)
       };
     } else {
       // console.warn('No favorites found in local storage');

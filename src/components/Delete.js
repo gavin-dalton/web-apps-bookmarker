@@ -48,7 +48,7 @@ const Delete = (props) => {
     <div className="container">
       <div className="border border-primary rounded-lg my-2 p-3">
         {bookmark.index > -1 ? (
-          <h4>{`Continue to delete bookmark: ${state.bookmarks[bookmark.index].siteName}`}</h4>
+          <h5>{`Continue to delete bookmark: ${state.bookmarks[bookmark.index].siteName}`}</h5>
         ) : (null)}
         <div className="mt-3">
           <button
