@@ -77,6 +77,8 @@ const Bookmarks = (props) => {
                             data-toggle="dropdown"
                             aria-haspopup="true"
                             aria-expanded="false"
+                            // Fixes flicker bug: https://github.com/twbs/bootstrap/issues/28693
+                            data-display="static"
                           ></button>
                           <div className="dropdown-menu">
                             <Links compact={true} siteId={bookmark.siteId} index={index} />

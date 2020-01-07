@@ -50,8 +50,9 @@ const Header = ({ home }) => {
             >New bookmark</Link>
             <div className="dropdown mr-lg-2 mr-0 mt-2 mt-lg-0">
               <button
-                className="btn btn-outline-primary dropdown-toggle"
+                className="btn btn-outline-primary dropdown-toggle w-100"
                 id="gd-bm-options"
+                type="button"
                 data-toggle="dropdown"
                 aria-haspopup="true"
                 aria-expanded="false"
