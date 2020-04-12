@@ -1,7 +1,9 @@
 import React from 'react';
 import { Link } from "react-router-dom";
+import { BookmarkContext } from '../context/BookmarkStore';
 
 const Header = ({ home }) => {
+  const [state, dispatch] = React.useContext(BookmarkContext);
 
   // Tries to toggle the navbar
   const collapseNavBar = () => {
@@ -48,7 +50,7 @@ const Header = ({ home }) => {
               title="Create new bookmark"
               onClick={collapseNavBar}
             >New bookmark</Link>
-            <div className="dropdown mr-lg-2 mr-0 mt-2 mt-lg-0">
+            <div className="dropdown mr-0 mt-2 mt-lg-0">
               <button
                 className="btn btn-outline-primary dropdown-toggle w-100"
                 id="gd-bm-options"
@@ -60,7 +62,7 @@ const Header = ({ home }) => {
               <div
                 className="dropdown-menu dropdown-menu-right mt-2" aria-labelledby="gd-bm-options">
                 <Link
-                  className="dropdown-item"
+                  className={state.isEmpty ? ("dropdown-item disabled") : ("dropdown-item")}
                   to={`/download`}
                   onClick={collapseNavBar}
                 >Download my bookmarks</Link>
@@ -69,11 +71,11 @@ const Header = ({ home }) => {
                   to={`/upload`}
                   onClick={collapseNavBar}
                 >Upload my bookmarks</Link>
-                <Link
+                {/* <Link
                   className="dropdown-item"
                   to={`/settings`}
                   onClick={collapseNavBar}
-                >Settings</Link>
+                >Settings</Link> */}
               </div>
             </div>
           </div>
