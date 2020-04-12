@@ -2,13 +2,13 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 // Components, assets & utils
-import Header from './components/Header';
-import Content from './components/Content';
-import Editor from './components/Editor';
-import Delete from './components/Delete';
-import Download from './components/Download';
-import Upload from './components/Upload';
-import Settings from './components/Settings';
+import Header       from './components/Header';
+import Content      from './components/Content';
+import Editor       from './components/Editor';
+import Delete       from './components/Delete';
+import Download     from './components/Download';
+import Upload       from './components/Upload';
+import Settings     from './components/Settings';
 import PageNotFound from './components/PageNotFound';
 import './assets/Bookmarker.scss';
 import { isLocalStorage } from './utilities/localstorage'
