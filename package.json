@@ -4,6 +4,7 @@
   "private": true,
   "homepage": "https://www.openapps.co.za/apps/bookmarker",
   "dependencies": {
+    "bootstrap": "^4.4.1",
     "lodash": "^4.17.15",
     "node-sass": "^4.13.0",
     "react": "^16.8.6",

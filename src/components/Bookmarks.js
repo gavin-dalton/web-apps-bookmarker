@@ -7,26 +7,26 @@ const Links = (props) => {
   return (
     <>
       <Link
-        className={props.compact ? 'dropdown-item' : 'btn btn-outline-success mx-2'}
+        className={props.compact ? 'dropdown-item' : 'btn btn-outline-success gd-btn-action mx-2'}
         to={`/edit/${props.siteId}`}
         data-toggle="tooltip"
         data-placement="top"
         title="Edit"
-      >{props.compact ? 'Edit' : (<i className="far fa-edit"></i>)}</Link>
+      >{props.compact ? 'Edit' : (<i className="far fa-edit gd-ico-action"></i>)}</Link>
       <Link
-        className={props.compact ? 'dropdown-item' : 'btn btn-outline-primary mr-2'}
+        className={props.compact ? 'dropdown-item' : 'btn btn-outline-primary gd-btn-action mr-2'}
         to={`/copy/${props.siteId}`}
         data-toggle="tooltip"
         data-placement="top"
         title="Copy"
-      >{props.compact ? 'Copy' : (<i className="far fa-copy"></i>)}</Link>
+      >{props.compact ? 'Copy' : (<i className="far fa-copy gd-ico-action"></i>)}</Link>
       <Link
-        className={props.compact ? 'dropdown-item' : 'btn btn-outline-danger'}
+        className={props.compact ? 'dropdown-item' : 'btn btn-outline-danger gd-btn-action'}
         to={`/delete/${props.index}~${props.siteId}`}
         data-toggle="tooltip"
         data-placement="top"
         title="Delete"
-      >{props.compact ? 'Delete' : (<i className="far fa-trash-alt"></i>)}</Link>
+      >{props.compact ? 'Delete' : (<i className="far fa-trash-alt gd-ico-action"></i>)}</Link>
     </>
   )
 }
