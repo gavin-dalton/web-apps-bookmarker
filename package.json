@@ -2,7 +2,7 @@
   "name": "web-apps-bookmarker",
   "version": "0.2.1",
   "private": true,
-  "homepage": "https://www.openapps.co.za/apps/web-apps-bookmarker",
+  "homepage": "https://www.openapps.co.za/apps/bookmarker",
   "dependencies": {
     "lodash": "^4.17.15",
     "node-sass": "^4.13.0",
