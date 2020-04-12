@@ -2,22 +2,22 @@
 
 $primary: #6699cc;
 $secondary: #3a5c7f;
-$success: #2eb82e;
+$success: #007900;
 $info: #e6e600;
 $warning: #e66800;
-$danger: #e60000;
+$danger: #940000;
 $light: #a1b4c7;
 $dark: #1f4163;
 $white: #ffffff;
 $black: #000000;
-$hover: #4d4c70;
+$hover: #294e72;
 
 // $theme-colors: (
 
 // );
 
 $body-bg: $black;
-// $body-color: $light;
+$body-color: $light;
 
 // Components
 // Define common padding and border radius sizes and more.
@@ -33,9 +33,7 @@ $body-bg: $black;
 // $box-shadow:                  0 .5rem 1rem rgba($black, .15) !default;
 // $box-shadow-lg:               0 1rem 3rem rgba($black, .175) !default;
 // $component-active-color:      $white !default;
-$component-active-color: $info;
 // $component-active-bg:         theme-color("primary") !default;
-$component-active-bg: $black;
 // $caret-width:                 .3em !default;
 // $caret-vertical-align:        $caret-width * .85 !default;
 // $caret-spacing:               $caret-width * .85 !default;

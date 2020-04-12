@@ -14,7 +14,7 @@ const Links = (props) => {
         title="Edit"
       >{props.compact ? 'Edit' : (<i className="far fa-edit gd-ico-action"></i>)}</Link>
       <Link
-        className={props.compact ? 'dropdown-item' : 'btn btn-outline-primary gd-btn-action mr-2'}
+        className={props.compact ? 'dropdown-item' : 'btn btn-outline-secondary gd-btn-action mr-2'}
         to={`/copy/${props.siteId}`}
         data-toggle="tooltip"
         data-placement="top"
