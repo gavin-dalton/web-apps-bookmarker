@@ -15,7 +15,7 @@ import { isLocalStorage } from './utilities/localstorage'
 
 const App = () => {
   // https://medium.com/@svinkle/how-to-deploy-a-react-app-to-a-subdirectory-f694d46427c1
-  const root = '/apps/web-apps-bookmarker';
+  const root = '/apps/bookmarker';
 
   return (
     <>
