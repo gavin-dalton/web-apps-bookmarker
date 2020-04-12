@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { BookmarkContext } from '../context/BookmarkStore';
 
 const Header = ({ home }) => {
-  const [state, dispatch] = React.useContext(BookmarkContext);
+  const [state] = React.useContext(BookmarkContext);
 
   // Tries to toggle the navbar
   const collapseNavBar = () => {

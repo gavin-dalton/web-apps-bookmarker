@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react';
+import React from 'react';
 import { Link } from "react-router-dom";
 import { BookmarkContext } from '../context/BookmarkStore';
 
@@ -32,9 +32,9 @@ const Links = (props) => {
 }
 
 const Bookmarks = (props) => {
-  const [state, dispatch] = useContext(BookmarkContext);
+  const [state, dispatch] = React.useContext(BookmarkContext);
 
-  useEffect(() => {
+  React.useEffect(() => {
     // dispatch({ type: 'BM_LOADING' })
     // setTimeout(() => {
     if (state.bookmarks.length > 0) {
@@ -43,10 +43,12 @@ const Bookmarks = (props) => {
       dispatch({ type: 'BM_EMPTY' });
     }
     // }, 500);
+    console.log('Bookmarks: effect ran');
     // Effect clean-up function
     return () => true;
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [props.route]);
+    // *eslint-disable-next-line react-hooks/exhaustive-deps*
+  }, [state.bookmarks.length, dispatch]);
+  // ,props.route
 
   // console.log('Bookmarks: state...', state);
   // console.log('Bookmarks: props...', props);
