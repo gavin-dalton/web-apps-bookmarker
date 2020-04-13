@@ -30,14 +30,14 @@ const Header = ({ home }) => {
         ><span className="navbar-text text-white h5 m-0">BookMARKER</span></a>
 
         <button
-          className="navbar-toggler btn btn-outline-primary"
+          className="navbar-toggler px-1"
           type="button"
           data-toggle="collapse"
           data-target="#gd-bm-navbar"
           aria-controls="gd-bm-navbar"
           aria-expanded="false"
           aria-label="Toggle navigation">
-          <span className="navbar-toggler-icon text-primary"></span>
+          <span className="navbar-toggler-icon"></span>
         </button>
 
         <div className="collapse navbar-collapse" id="gd-bm-navbar">
