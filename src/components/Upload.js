@@ -62,8 +62,8 @@ const Upload = (props) => {
   return (
     <div className="mx-2">
       <div className="border border-primary rounded-lg my-2 p-3">
-        <h5>Upload</h5>
-        <p>Paste your saved bookmarks in the text area below</p>
+        <h5 className="text-secondary">Upload</h5>
+        <p className="text-secondary">Paste your saved bookmarks in the text area below</p>
         <div className="d-flex flex-row">
           <textarea
             className="w-100 gd-bm-textarea"

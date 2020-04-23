@@ -1,22 +1,22 @@
 // Custom BS4 variables
 
-$primary: #6699cc;
-$secondary: #3a5c7f;
-$success: #007900;
-$info: #e6e600;
-$warning: #e66800;
-$danger: #940000;
-$light: #a1b4c7;
-$dark: #1f4163;
+$primary: #b3cce6;
+$secondary: #6697cc;
+$success: green;
+$info: yellow;
+$warning: orange;
+$danger: red;
+$light: #3973ac;
+$dark: #132639;
 $white: #ffffff;
 $black: #000000;
-$hover: #294e72;
+$hover: #3d73a9;
 
 // $theme-colors: (
 
 // );
 
-$body-bg: $black;
+$body-bg: $dark;
 $body-color: $light;
 
 // Components
@@ -43,7 +43,7 @@ $body-color: $light;
 
 // Dropdowns
 $dropdown-padding-y: 0px;
-$dropdown-bg: $light;
+$dropdown-bg: $primary;
 
 // $dropdown-min-width:                10rem !default;
 // $dropdown-padding-y:                .5rem !default;
@@ -69,6 +69,9 @@ $dropdown-bg: $light;
 // $dropdown-header-color:             $gray-600 !default;
 
 // Forms
+$input-bg: lighten($dark, 5%);
+$input-color: $primary;
+$input-placeholder-color: $secondary;
 // $input-bg:                              $white !default;
 // $input-disabled-bg:                     $gray-200 !default;
 // $input-color:                           $gray-700 !default;
@@ -101,9 +104,9 @@ $dropdown-bg: $light;
 // $input-btn-focus-box-shadow:  0 0 0 $input-btn-focus-width $input-btn-focus-color !default;
 
 // List group
-$list-group-color: $light;
-$list-group-bg: $dark;
-$list-group-hover-bg: $hover;
+$list-group-color: $white;
+$list-group-bg: lighten($dark, 10%);
+$list-group-hover-bg: $light;
 $list-group-action-color: $white;
 $list-group-action-active-color: $dark;
 $list-group-action-active-bg: $light;

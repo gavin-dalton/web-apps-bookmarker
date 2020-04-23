@@ -99,7 +99,7 @@ const Editor = (props) => {
 
   const handleURL = (e) => {
     if (!e.target.value) {
-      setBookmark({ ...bookmark, siteURL: 'https://www..com' });
+      setBookmark({ ...bookmark, siteURL: 'https://www.' });
     }
   };
 
@@ -108,7 +108,7 @@ const Editor = (props) => {
   return (
     <div className="container">
       <div className="border border-primary rounded-lg my-2 p-3">
-        <h5>{title}</h5>
+        <h5 className="text-secondary mb-3">{title}</h5>
         <form autoComplete="off" onSubmit={handleSave}>
           <div className="form-group input-group-lg mb-0">
             <input
@@ -124,7 +124,7 @@ const Editor = (props) => {
               className="form-control mb-3"
               type="url"
               placeholder="Site URL e.g. https://www.site.com"
-              pattern="(http:\/\/www\.|https:\/\/www\.|http:\/\/|https:\/\/)?[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?"
+              // pattern="(http:\/\/www\.|https:\/\/www\.|http:\/\/|https:\/\/)?[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?"
               name="siteURL"
               value={bookmark.siteURL}
               onChange={e => setBookmark({ ...bookmark, siteURL: e.target.value })}

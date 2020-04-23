@@ -53,8 +53,8 @@ const Download = (props) => {
   return (
     <div className="mx-2">
       <div className="border border-primary rounded-lg my-2 p-3">
-        <h5>Download</h5>
-        <p>Copy content to a text file</p>
+        <h5 className="text-secondary">Download</h5>
+        <p className="text-secondary">Copy content to a text file</p>
         <div className="d-flex flex-row">
           <textarea
             className="w-100 gd-bm-textarea"
