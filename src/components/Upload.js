@@ -62,8 +62,8 @@ const Upload = (props) => {
   return (
     <div className="mx-2">
       <div className="border border-primary rounded-lg my-2 p-3">
-        <h5 className="text-secondary">Upload</h5>
-        <p className="text-secondary">Paste your saved bookmarks in the text area below</p>
+        <h5 className="text-primary">Upload</h5>
+        <p className="text-primary">Paste your saved bookmarks in the text area below</p>
         <div className="d-flex flex-row">
           <textarea
             className="w-100 gd-bm-textarea"
@@ -75,7 +75,7 @@ const Upload = (props) => {
         <div className="d-flex flex-row mt-3">
           <button
             type="button"
-            className={saveButtonText === 'ERROR' ? ('btn btn-outline-danger') : ('btn btn-outline-success')}
+            className={saveButtonText === 'ERROR' ? ('btn btn-outline-danger') : ('btn btn-outline-primary')}
             disabled={!saveButtonDisabled}
             onClick={handleSaveButton}
           >{saveButtonText}</button>

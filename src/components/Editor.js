@@ -108,7 +108,7 @@ const Editor = (props) => {
   return (
     <div className="container">
       <div className="border border-primary rounded-lg my-2 p-3">
-        <h5 className="text-secondary mb-3">{title}</h5>
+        <h5 className="text-primary mb-3">{title}</h5>
         <form autoComplete="off" onSubmit={handleSave}>
           <div className="form-group input-group-lg mb-0">
             <input
@@ -132,7 +132,7 @@ const Editor = (props) => {
               required={true}
             />
             <button
-              className="btn btn-outline-success mr-2"
+              className="btn btn-outline-primary mr-2"
               type="submit"
             >Save</button>
             <button

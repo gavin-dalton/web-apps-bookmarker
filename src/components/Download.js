@@ -53,8 +53,8 @@ const Download = (props) => {
   return (
     <div className="mx-2">
       <div className="border border-primary rounded-lg my-2 p-3">
-        <h5 className="text-secondary">Download</h5>
-        <p className="text-secondary">Copy content to a text file</p>
+        <h5 className="text-primary">Download</h5>
+        <p className="text-primary">Copy content to a text file</p>
         <div className="d-flex flex-row">
           <textarea
             className="w-100 gd-bm-textarea"
@@ -65,7 +65,7 @@ const Download = (props) => {
         <div className="d-flex flex-row mt-3">
           <button
             type="button"
-            className="btn btn-outline-success"
+            className="btn btn-outline-primary"
             disabled={!isDisabled}
             onClick={handleCopy}
           >{copyButton}</button>
