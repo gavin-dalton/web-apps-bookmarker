@@ -1,10 +1,13 @@
 # OpenApps - Bookmarker
 
-Bookmarker is a [PWA](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app) pet project, that allows you create web site bookmarks and save them to your local machine. You can export your saved bookmarks or import a backup list. Functionality highlights:
+Bookmarker is a [PWA](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app) pet project, that allows you to create website bookmarks and save them to your local machine. Its a handy app when set as your browser's home page. Functionality highlights:
 * Save bookmarks to your local machine.
-* Save As (copy) an existing bookmark.
-* Export and import bookmarks.
+* Copy an existing bookmark as a new bookmark.
+* Export and import bookmarks as [JSON](https://www.json.org/).
 * Bookmarks are indexed by first character for quick filtering.
+* Bookmarker is a 100% mobile friendly.
+
+This web app is hosted at [OpenApps](https://www.openapps.co.za/apps/bookmarker/).
 
 ## Getting Started
 
@@ -40,6 +43,6 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE.md) f
 
 ## ToDo List
 
-* [ ] Integrate right action buttons into bookmark list item.
-* [ ] Reorder bookmarks into most used and then alphabetically.
+* [ ] Integrate right action buttons into bookmark item list. This will provide more real-estate for the bookmark title and gives a cleaner look and feel.
+* [ ] Reorder bookmarks into most recently used and then alphabetically.
 * [ ] Add a bookmark search ability.
